@@ -2,15 +2,7 @@
 import React from "react";
 import { ColumnDef, useReactTable, flexRender, getCoreRowModel, getSortedRowModel } from "@tanstack/react-table";
 import Image from "next/image";
-
-type Product = {
-    id: string;
-    name: string;
-    price: string;
-    quality: number;
-    description: string;
-    imageUrl: string;
-};
+import { Product } from "../types/product.type";
 
 const ProductsTable: React.FC<{ data: Product[] }> = ({ data }) => {
     const columns = React.useMemo<ColumnDef<Product>[]>(
@@ -114,11 +106,7 @@ const ProductsTable: React.FC<{ data: Product[] }> = ({ data }) => {
                                 <th
                                     key={header.id}
                                     className="p-2 text-left border border-gray-300 cursor-pointer relative"
-                                    {...{
-                                        style: {
-                                            width: header.getSize(),
-                                        },
-                                    }}
+                                    style={{ width: header.getSize() }}
                                     onClick={header.column.getToggleSortingHandler()}
                                 >
                                     <div className="flex items-center">
@@ -150,8 +138,18 @@ const ProductsTable: React.FC<{ data: Product[] }> = ({ data }) => {
                                 <td
                                     key={cell.id}
                                     className="p-2 border border-gray-300"
+                                    data-label={cell.column.columnDef.header}
                                 >
                                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                    {/* <div className="block lg:hidden text-left font-bold">
+                                        {cell.column.columnDef.header}:
+                                    </div>
+                                    <div className="hidden lg:block">
+                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                    </div>
+                                    <div className="block lg:hidden">
+                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                    </div> */}
                                 </td>
                             ))}
                         </tr>
