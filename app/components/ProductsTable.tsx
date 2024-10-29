@@ -72,7 +72,13 @@ const ProductsTable: React.FC<{ data: Product[] }> = ({ data }) => {
         getSortedRowModel: getSortedRowModel(),
         columnResizeMode: "onChange",
         initialState: {
-            sorting: [{ id: "name", desc: false }],
+            sorting: [
+                { id: "name", desc: false },
+                { id: "id", desc: true },
+                { id: "price", desc: true },
+                { id: "quality", desc: true },
+                { id: "description", desc: true },
+            ],
         },
     });
 
