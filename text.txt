@@ -1,0 +1,35 @@
+Build a fully responsive product listing table using @tanstack/react-table v8. The table will display key product information and include functionality such as sorting, column visibility toggling, resizing, and adaptability to various screen sizes.
+Data Model:
+The table will display the following details for each product:
+- Id: (string)
+- Name: (string)
+- Price: (string)
+- Quality: (number, range: 1 to 5)
+- Description: (string)
+- Image URL: (string)
+
+
+Table Features:
+1. Responsiveness:
+- The table should be fully responsive down to a minimum width of 800px.
+- Between 800px and 1000px screen widths, implement a horizontal scroll if necessary.
+2. Sorting:
+- Enable sorting for all columns.
+- Default sorting: Name column should be sorted in ascending order, while all other columns in descending order.
+3. Column Visibility:
+- Allow users to hide or show columns.
+- The Name column must always be visible and pinned.
+4. Column Resizing:
+- Implement column resizing functionality using React Table v8's built-in features.
+Project Specifications:
+- Use React.js/Next.js for the frontend.
+- Style the table with Tailwind CSS, Chakra UI, or Material UI.
+- Follow TypeScript strict rules to ensure type safety.
+- Jest testing for the product listing table is optional but recommended for ensuring functionality.
+- Mock the data for display; no real API calls should be made.
+Acceptance Criteria:
+- The table should render correctly with the provided data model.
+- It should be responsive, with proper handling of screen widths between 800px and 1000px.
+- Sorting, resizing, and column visibility toggling should work as expected.
+- The Name column must always be visible and pinned, with other columns customizable.
+- If included, Jest tests should ensure the table functions correctly.
