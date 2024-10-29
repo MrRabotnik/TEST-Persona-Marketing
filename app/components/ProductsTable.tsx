@@ -101,67 +101,60 @@ const ProductsTable: React.FC<{ data: Product[] }> = ({ data }) => {
                     </div>
                 ))}
             </div>
-            <table className="min-w-[800px] w-full border border-gray-300">
-                <thead>
-                    {table.getHeaderGroups().map((headerGroup) => (
-                        <tr
-                            key={headerGroup.id}
-                            className="bg-gray-200 border-b border-gray-300"
-                        >
-                            {headerGroup.headers.map((header) => (
-                                <th
-                                    key={header.id}
-                                    className="p-2 text-left border border-gray-300 cursor-pointer relative"
-                                    style={{ width: header.getSize() }}
-                                    onClick={header.column.getToggleSortingHandler()}
-                                >
-                                    <div className="flex items-center">
-                                        {flexRender(header.column.columnDef.header, header.getContext())}
-                                        {header.column.getIsSorted() && (
-                                            <span>{header.column.getIsSorted() === "asc" ? " 🔼" : " 🔽"}</span>
-                                        )}
-                                        <div
-                                            onMouseDown={header.getResizeHandler()}
-                                            onTouchStart={header.getResizeHandler()}
-                                            className={`absolute right-0 top-0 h-full w-2 cursor-col-resize ${
-                                                header.column.getIsResizing() ? "bg-gray-300" : "bg-gray-200"
-                                            }`}
-                                            onClick={(e) => e.stopPropagation()}
-                                        />
-                                    </div>
-                                </th>
-                            ))}
-                        </tr>
-                    ))}
-                </thead>
-                <tbody>
-                    {table.getRowModel().rows.map((row) => (
-                        <tr
-                            key={row.id}
-                            className="odd:bg-gray-100 even:bg-white border-b border-gray-300"
-                        >
-                            {row.getVisibleCells().map((cell) => (
-                                <td
-                                    key={cell.id}
-                                    className="p-2 border border-gray-300"
-                                    data-label={cell.column.columnDef.header}
-                                >
-                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                    {/* <div className="block lg:hidden text-left font-bold">
-                                        {cell.column.columnDef.header}:
-                                    </div>
-                                    <div className="hidden lg:block">
+            <div className="min-w-[800px]">
+                <table className="min-w-full border border-gray-300">
+                    <thead>
+                        {table.getHeaderGroups().map((headerGroup) => (
+                            <tr
+                                key={headerGroup.id}
+                                className="bg-gray-200 border-b border-gray-300"
+                            >
+                                {headerGroup.headers.map((header) => (
+                                    <th
+                                        key={header.id}
+                                        className="p-2 text-left border border-gray-300 cursor-pointer relative"
+                                        style={{ width: header.getSize() }}
+                                        onClick={header.column.getToggleSortingHandler()}
+                                    >
+                                        <div className="flex items-center">
+                                            {flexRender(header.column.columnDef.header, header.getContext())}
+                                            {header.column.getIsSorted() && (
+                                                <span>{header.column.getIsSorted() === "asc" ? " 🔼" : " 🔽"}</span>
+                                            )}
+                                            <div
+                                                onMouseDown={header.getResizeHandler()}
+                                                onTouchStart={header.getResizeHandler()}
+                                                className={`absolute right-0 top-0 h-full w-2 cursor-col-resize ${
+                                                    header.column.getIsResizing() ? "bg-gray-300" : "bg-gray-200"
+                                                }`}
+                                                onClick={(e) => e.stopPropagation()}
+                                            />
+                                        </div>
+                                    </th>
+                                ))}
+                            </tr>
+                        ))}
+                    </thead>
+                    <tbody>
+                        {table.getRowModel().rows.map((row) => (
+                            <tr
+                                key={row.id}
+                                className="odd:bg-gray-100 even:bg-white border-b border-gray-300"
+                            >
+                                {row.getVisibleCells().map((cell) => (
+                                    <td
+                                        key={cell.id}
+                                        className="p-2 border border-gray-300"
+                                        data-label={cell.column.columnDef.header}
+                                    >
                                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                    </div>
-                                    <div className="block lg:hidden">
-                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                    </div> */}
-                                </td>
-                            ))}
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+                                    </td>
+                                ))}
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };
